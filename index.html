@@ -27,20 +27,39 @@
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
 
-    /* long way
+//////////////////   Long Way   /////////////////////////////////
+/*
     const currentYear = (new Date()).getFullYear();
     const isAdult = people.some(function(person) {
       if (currentYear - person.year >= 19){
         return true;
       }
-    }); */
-    //easier to read
+    }); 
+*/
+////////////////////////////////////////////////////////////////
 
+//easier to read
   const isAdult = people.some(person => {
     const currentYear = (new Date()).getFullYear();
     return currentYear - person.year >= 19;
   });
   console.log(isAdult);
+
+
+//identify the age of each individual
+const age = people.map(person => {
+  const currentYear = (new Date()).getFullYear();
+  return currentYear - person.year;
+});
+//identify the name
+
+const name = people.map(person => {
+  return person.name;
+});
+
+//console to table
+console.table(name);
+console.table(age);
 
     // Array.prototype.every() // is everyone 19 or older?
     const allAdults = people.every(person => {
@@ -78,6 +97,8 @@
       ...comments.slice(0, index), //spread (...) items into array
       ...comments.slice(index + 1)
     ];
+
+    console.table(newComments);
   </script>
 </body>
 </html>
